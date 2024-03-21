@@ -3,8 +3,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:preparation/pages/sign_in/sign_in_bloc/sign_in_bloc.dart';
-import 'package:preparation/pages/sign_in/sign_in_screen.dart';
+import 'package:preparation/logic/blocs/sign_in_bloc/sign_in_bloc.dart';
+import 'package:preparation/presentation/sign_in/sign_in_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
