@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:preparation/blocs/internet_bloc/internet_bloc.dart';
-import 'package:preparation/pages/homePage.dart';
+import 'package:preparation/cubits/internet_cubit.dart';
+import 'package:preparation/pages/welcome_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,15 +14,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => InternetBloc(),
+      create: (context) => InternetCubit(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        title: 'Preparation',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: HomePage(),
+        home: WelcomeScreen(),
       ),
     );
   }
