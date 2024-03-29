@@ -7,6 +7,9 @@ class SignInErrorState extends SignInState{
   SignInErrorState( {this.errorMessage});
 }
 
-class SignInValidState extends SignInState{}
+class SignInSuccessState extends SignInState{
+  String signinSuccesMessage;
+  SignInSuccessState(this.signinSuccesMessage);
+}
 
 class SignInLoadingState extends SignInState{}

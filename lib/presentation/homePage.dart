@@ -1,28 +1,41 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:preparation/cubits/internet_cubit.dart';
+import 'package:preparation/logic/cubits/internet_cubit.dart';
 import 'package:preparation/logic/blocs/course_cubit/course_cubit.dart';
 import 'package:preparation/logic/blocs/course_cubit/course_state.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Preparation"),
+        title: Text("Preparation"),
         centerTitle: true,
-        leading: const Drawer(
-          elevation: 0,
-          child: Icon(
-            Icons.menu,
-          ),
-        ),
       ),
+      drawer: Drawer(
+          elevation: 0,
+          child: SizedBox(
+            width: 20,
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: [
+                DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Colors.greenAccent,
+                ),
+                child: Text("Drawer header")),
+                  Text("Home"),
+                Text("Courses"),
+                Text("Ebooks"),
+                Text("Profile"),
+              ],
+            ),
+          )),
       body: BlocConsumer<InternetCubit, InternetState>(
         listener: (context, state) {
           if (state == InternetState.Gained) {
@@ -60,15 +73,22 @@ class HomePage extends StatelessWidget {
                                     const EdgeInsets.symmetric(horizontal: 8),
                                 child: Card(
                                   color: Colors.white,
-                                  child: ListTile(onTap: () {
-                                    
-                                  },visualDensity: VisualDensity.compact,
-                                    trailing: Text("Price : ${state.courses[index].price.toString()}"),
+                                  child: ListTile(
+                                    onTap: () {},
+                                    leading: CircleAvatar(
+                                      child: Icon(Icons.book_sharp),
+                                      foregroundColor: Colors.black87,
+                                      backgroundColor: Colors.greenAccent,
+                                    ),
+                                    trailing: Text(
+                                        "Price : ${state.courses[index].price.toString()}"),
                                     subtitle: Text(state
                                         .courses[index].description
                                         .toString()),
                                     title: Text(
-                                      state.courses[index].name.toString(),style: TextStyle(fontWeight: FontWeight.bold),
+                                      state.courses[index].name.toString(),
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
                                     ),
                                   ),
                                 ),

@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:developer'; // Import the 'dart:developer' library
 
 import 'package:dio/dio.dart';
@@ -22,7 +21,7 @@ class CourseRepository {
       }
     } catch (ex) {
       log("Fetch courses error: $ex");
-      throw ex;
+      rethrow;
     }
   }
 }

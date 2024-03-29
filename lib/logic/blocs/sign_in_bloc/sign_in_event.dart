@@ -7,8 +7,9 @@ class SignInTextChangedEvent extends SignInEvent{
 }
 
 
-class SignInSubmitEvent extends SignInEvent{
-  String? email;
-  String? password;
-  SignInSubmitEvent({this.email,this.password});
+class SignInSubmitEvent extends SignInEvent {
+  final String email;
+  final String password;
+
+  SignInSubmitEvent({required this.email, required this.password});
 }
