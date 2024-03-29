@@ -2,12 +2,10 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:preparation/logic/blocs/sign_in_bloc/sign_in_bloc.dart';
-import 'package:preparation/presentation/sign_in/sign_in_screen.dart';
+import 'package:preparation/presentation/auth_screen/sign_in_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({super.key});
+  const WelcomeScreen({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,10 +26,7 @@ class WelcomeScreen extends StatelessWidget {
             Navigator.push(
               context,
               CupertinoPageRoute(
-                builder: (context) => BlocProvider(
-                  create: (context) => SignInBloc(),
-                  child: SignInScreen(),
-                ),
+                builder: (context) => SignInScreen(),
               ),
             );
           },

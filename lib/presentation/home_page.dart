@@ -11,7 +11,7 @@ import 'package:preparation/logic/blocs/course_cubit/course_state.dart';
 import 'package:preparation/presentation/auth_screen/sign_in_screen.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  const HomePage({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,24 +21,55 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
       ),
       drawer: Drawer(
+        width: MediaQuery.of(context).size.width * 0.55,
         elevation: 0,
-        width: MediaQuery.of(context).size.width *
-            0.5, // Set the width to 60% of the screen width
         child: ListView(
           children: [
             DrawerHeader(
               decoration: BoxDecoration(),
-              child: Text("Drawer header"),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CircleAvatar(),
+                  Text("Robin Mandhotia")
+                ],
+              ),
             ),
             textButton("Home", () {}),
             textButton("Search", () {}),
             textButton("Courses", () {}),
             textButton("Profile", () {}),
-            textButton(("Log out"), () {
-              BlocProvider.of<SignOutBloc>(context).add(SignOutSuccessEvent());
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => SignInScreen()),
+            textButton("Log out", () {
+              showDialog(
+                context: context,
+                builder: (BuildContext dialogContext) {
+                  return AlertDialog(
+                    title: Text('Confirm Log Out'),
+                    content: Text('Are you sure you want to log out?'),
+                    actions:[
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(dialogContext).pop();
+                        },
+                        child: Text('No'),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          BlocProvider.of<SignOutBloc>(context)
+                              .add(SignOutSuccessEvent());
+                          Navigator.of(dialogContext).pop();
+                          Navigator.of(context).pushReplacement(
+                            CupertinoPageRoute(
+                              builder: (context) => SignInScreen(),
+                            ),
+                          );
+                        },
+                        child: Text('Yes'),
+                      ),
+                    ],
+                  );
+                },
               );
             })
           ],
@@ -142,7 +173,7 @@ class HomePage extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: TextButton(
         onPressed: onPressed,
-        child: Text(text),
+        child: Text(text,style: TextStyle(fontSize: 18),),
         style: ButtonStyle(alignment: Alignment.centerLeft),
       ),
     );

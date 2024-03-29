@@ -6,7 +6,7 @@ import 'package:preparation/logic/blocs/course_cubit/course_cubit.dart';
 import 'package:preparation/logic/blocs/sign_in_bloc/sign_in_bloc.dart';
 import 'package:preparation/logic/blocs/sign_in_bloc/sign_in_event.dart';
 import 'package:preparation/logic/blocs/sign_in_bloc/sign_in_state.dart';
-import 'package:preparation/presentation/homePage.dart';
+import 'package:preparation/presentation/home_page.dart';
 
 class SignInScreen extends StatelessWidget {
   SignInScreen({super.key});
@@ -59,6 +59,7 @@ class SignInScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: TextField(
+                  autofocus: true,
                   controller: emailController,
                   decoration: InputDecoration(
                     hintText: "Email",
@@ -72,6 +73,7 @@ class SignInScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(10.0),
                 child: TextField(
                   controller: passwordController,
+                  obscureText: true,
                   decoration: InputDecoration(
                     hintText: "Password",
                     border: OutlineInputBorder(
