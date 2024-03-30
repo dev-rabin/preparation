@@ -7,7 +7,7 @@ import 'package:preparation/logic/blocs/sign_in_bloc/sign_in_bloc.dart';
 import 'package:preparation/logic/blocs/sign_out_bloc/sign_out_bloc.dart';
 import 'package:preparation/logic/cubits/internet_cubit.dart';
 import 'package:preparation/presentation/home_page.dart';
-import 'package:preparation/presentation/auth_screen/sign_in_screen.dart';
+import 'package:preparation/presentation/welcome_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
               if (snapshot.data == true) {
                 return HomePage();
               } else {
-                return SignInScreen();
+                return WelcomeScreen();
               }
             }
           },

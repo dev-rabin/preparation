@@ -10,6 +10,29 @@ import 'package:shared_preferences/shared_preferences.dart';
 API api = API();
 
 class AuthRepository {
+  //Student Registration
+
+Future<void> studentRegistration(String name, String email, String password) async {
+  try {
+    if (name.isEmpty || email.isEmpty || password.isEmpty) {
+      throw("Please fill all details!");
+    }else if (EmailValidator.validate(email) == false) {
+        throw ("Please enter valid email address!");
+      } else if (password.length < 8) {
+        throw ("Enter atleast 8 characters or more");
+      }
+    Response response = await api.sendRequest.post("/studentregister", data: {
+      "name": name,
+      "email": email,
+      "password": password,
+    });
+    if (response.statusCode == 200) {
+      print("Student registered successfully");
+    }
+  } catch (ex) {
+    rethrow;
+  }
+}
 
   //Login
   Future<void> login(String email, String password) async {
