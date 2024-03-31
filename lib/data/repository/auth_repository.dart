@@ -1,5 +1,4 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
-
 import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:preparation/data/models/student_model.dart';
@@ -10,8 +9,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 API api = API();
 
 class AuthRepository {
+  
   //Student Registration
-
 Future<void> studentRegistration(String name, String email, String password) async {
   try {
     if (name.isEmpty || email.isEmpty || password.isEmpty) {
@@ -27,7 +26,7 @@ Future<void> studentRegistration(String name, String email, String password) asy
       "password": password,
     });
     if (response.statusCode == 200) {
-      print("Student registered successfully");
+      log("Student registered successfully");
     }
   } catch (ex) {
     rethrow;
@@ -112,6 +111,4 @@ Future<void> studentRegistration(String name, String email, String password) asy
     rethrow;
   }
 }
-
-
- }
+}

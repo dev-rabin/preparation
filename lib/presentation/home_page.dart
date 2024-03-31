@@ -5,13 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:preparation/logic/blocs/sign_out_bloc/sign_out_event.dart';
 import 'package:preparation/logic/blocs/sign_out_bloc/sign_out_bloc.dart';
+import 'package:preparation/logic/blocs/student_data_cubit/student_data_cubit.dart';
 import 'package:preparation/logic/cubits/internet_cubit.dart';
 import 'package:preparation/logic/blocs/course_cubit/course_cubit.dart';
 import 'package:preparation/logic/blocs/course_cubit/course_state.dart';
 import 'package:preparation/presentation/auth_screen/sign_in_screen.dart';
+import 'package:preparation/presentation/student_screens/student_profile_screen.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key});
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,33 +23,56 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
       ),
       drawer: Drawer(
-        width: MediaQuery.of(context).size.width * 0.55,
+        width: MediaQuery.of(context).size.width * 0.5,
         elevation: 0,
         child: ListView(
           children: [
             DrawerHeader(
               decoration: BoxDecoration(),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CircleAvatar(),
-                  Text("Robin Mandhotia")
+                  Hero(
+                    tag: "profile-icon",
+                    child: CircleAvatar(
+                      radius: 30,
+                      child: Icon(CupertinoIcons.person,size: 30,),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        (context),
+                        MaterialPageRoute(
+                          builder: (context) => BlocProvider(
+                            create: (context) => StudentDataCubit(),
+                            child: StudentProfile(),
+                          ),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      "View profile",
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ),
                 ],
               ),
             ),
-            textButton("Home", () {}),
-            textButton("Search", () {}),
-            textButton("Courses", () {}),
-            textButton("Profile", () {}),
-            textButton("Log out", () {
+            textButton( "Home",Icon(CupertinoIcons.home), () {}),
+            textButton("Search",Icon(CupertinoIcons.search), () {}),
+            textButton("Courses",Icon(CupertinoIcons.book), () {}),
+            textButton("Profile",Icon(CupertinoIcons.person), () {}),
+            textButton("Log out",Icon(Icons.logout), () {
               showDialog(
                 context: context,
                 builder: (BuildContext dialogContext) {
                   return AlertDialog(
                     title: Text('Confirm Log Out'),
                     content: Text('Are you sure you want to log out?'),
-                    actions:[
+                    actions: [
                       TextButton(
                         onPressed: () {
                           Navigator.of(dialogContext).pop();
@@ -136,7 +161,7 @@ class HomePage extends StatelessWidget {
                           ),
                         );
                       }
-                      return const Text("An error occurred!");
+                      return Text("An error occurred!");
                     },
                   ),
                 ],
@@ -168,13 +193,21 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget textButton(String text, VoidCallback onPressed) {
+  Widget textButton(String text,Icon icon, VoidCallback onPressed) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: TextButton(
         onPressed: onPressed,
-        child: Text(text,style: TextStyle(fontSize: 18),),
-        style: ButtonStyle(alignment: Alignment.centerLeft),
+        child: Row(
+          children: [
+            icon,
+            SizedBox(width: 10,),
+            Text(
+              text,
+              style: TextStyle(fontSize: 18),
+            ),
+          ],
+        ),
       ),
     );
   }
