@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:preparation/logic/cubits/module_cubit/module_cubit.dart';
 import 'package:preparation/logic/blocs/sign_out_bloc/sign_out_event.dart';
 import 'package:preparation/logic/blocs/sign_out_bloc/sign_out_bloc.dart';
 import 'package:preparation/logic/blocs/student_data_cubit/student_data_cubit.dart';
@@ -10,6 +11,7 @@ import 'package:preparation/logic/cubits/internet_cubit.dart';
 import 'package:preparation/logic/blocs/course_cubit/course_cubit.dart';
 import 'package:preparation/logic/blocs/course_cubit/course_state.dart';
 import 'package:preparation/presentation/auth_screen/sign_in_screen.dart';
+import 'package:preparation/presentation/course_screens/course_detail.dart';
 import 'package:preparation/presentation/student_screens/student_profile_screen.dart';
 
 class HomePage extends StatelessWidget {
@@ -35,7 +37,10 @@ class HomePage extends StatelessWidget {
                     tag: "profile-icon",
                     child: CircleAvatar(
                       radius: 30,
-                      child: Icon(CupertinoIcons.person,size: 30,),
+                      child: Icon(
+                        CupertinoIcons.person,
+                        size: 30,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -61,11 +66,11 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
-            textButton( "Home",Icon(CupertinoIcons.home), () {}),
-            textButton("Search",Icon(CupertinoIcons.search), () {}),
-            textButton("Courses",Icon(CupertinoIcons.book), () {}),
-            textButton("Profile",Icon(CupertinoIcons.person), () {}),
-            textButton("Log out",Icon(Icons.logout), () {
+            textButton("Home", Icon(CupertinoIcons.home), () {}),
+            textButton("Search", Icon(CupertinoIcons.search), () {}),
+            textButton("Courses", Icon(CupertinoIcons.book), () {}),
+            textButton("Profile", Icon(CupertinoIcons.person), () {}),
+            textButton("Log out", Icon(Icons.logout), () {
               showDialog(
                 context: context,
                 builder: (BuildContext dialogContext) {
@@ -138,7 +143,23 @@ class HomePage extends StatelessWidget {
                                 child: Card(
                                   color: Colors.white,
                                   child: ListTile(
-                                    onTap: () {},
+                                    onTap: () {
+                                      final courseId =
+                                          state.courses[index].courseId;
+                                      if (courseId != null) {
+                                        Navigator.push(
+                                          context,
+                                          CupertinoPageRoute(
+                                            builder: (context) => BlocProvider(
+                                              create: (context) =>
+                                                  ModuleCubit(courseId),
+                                              child: CourseDetail(
+                                                  courseId: courseId),
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                    },
                                     leading: CircleAvatar(
                                       child: Icon(Icons.book_sharp),
                                       foregroundColor: Colors.black87,
@@ -193,7 +214,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget textButton(String text,Icon icon, VoidCallback onPressed) {
+  Widget textButton(String text, Icon icon, VoidCallback onPressed) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: TextButton(
@@ -201,7 +222,9 @@ class HomePage extends StatelessWidget {
         child: Row(
           children: [
             icon,
-            SizedBox(width: 10,),
+            SizedBox(
+              width: 10,
+            ),
             Text(
               text,
               style: TextStyle(fontSize: 18),
