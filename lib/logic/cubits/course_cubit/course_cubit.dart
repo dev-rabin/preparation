@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:preparation/data/models/course_model.dart';
 import 'package:preparation/data/repository/course_repository.dart';
-import 'package:preparation/logic/blocs/course_cubit/course_state.dart';
+import 'package:preparation/logic/cubits/course_cubit/course_state.dart';
 
 class CourseCubit extends Cubit<CourseState>{
   CourseCubit() : super(CourseLoadingState()){

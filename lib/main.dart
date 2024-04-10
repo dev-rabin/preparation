@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:preparation/logic/blocs/course_cubit/course_cubit.dart';
+import 'package:preparation/logic/cubits/course_cubit/course_cubit.dart';
 import 'package:preparation/logic/blocs/sign_in_bloc/sign_in_bloc.dart';
 import 'package:preparation/logic/blocs/sign_out_bloc/sign_out_bloc.dart';
 import 'package:preparation/logic/cubits/internet_cubit.dart';
@@ -11,7 +11,7 @@ import 'package:preparation/presentation/splash_screen.dart';
 void main() {
   runApp(MyApp());
 }
-
+ 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 

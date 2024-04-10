@@ -1,10 +1,10 @@
 class ModuleModel {
   int? moduleId;
   int? courseId;
-  String? name;
+  String? moduleName;
   int? number;
   String? createdAt;
-  int? courseId;
+  String? courseName;
   String? description;
   String? price;
   String? isProgressLimited;
@@ -12,10 +12,10 @@ class ModuleModel {
   ModuleModel(
       {this.moduleId,
       this.courseId,
-      this.name,
+      this.moduleName,
       this.number,
       this.createdAt,
-      this.courseId,
+      this.courseName,
       this.description,
       this.price,
       this.isProgressLimited});
@@ -23,23 +23,25 @@ class ModuleModel {
   ModuleModel.fromJson(Map<String, dynamic> json) {
     moduleId = json['module_id'];
     courseId = json['courseId'];
-    name = json['name'];
+    moduleName = json['module_name'];
     number = json['number'];
     createdAt = json['createdAt'];
     courseId = json['course_id'];
+    courseName = json['course_name'];
     description = json['description'];
     price = json['price'];
     isProgressLimited = json['is_progress_limited'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['module_id'] = moduleId;
     data['courseId'] = courseId;
-    data['name'] = name;
+    data['module_name'] = moduleName;
     data['number'] = number;
     data['createdAt'] = createdAt;
     data['course_id'] = courseId;
+    data['course_name'] = courseName;
     data['description'] = description;
     data['price'] = price;
     data['is_progress_limited'] = isProgressLimited;

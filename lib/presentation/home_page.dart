@@ -8,8 +8,8 @@ import 'package:preparation/logic/blocs/sign_out_bloc/sign_out_event.dart';
 import 'package:preparation/logic/blocs/sign_out_bloc/sign_out_bloc.dart';
 import 'package:preparation/logic/blocs/student_data_cubit/student_data_cubit.dart';
 import 'package:preparation/logic/cubits/internet_cubit.dart';
-import 'package:preparation/logic/blocs/course_cubit/course_cubit.dart';
-import 'package:preparation/logic/blocs/course_cubit/course_state.dart';
+import 'package:preparation/logic/cubits/course_cubit/course_cubit.dart';
+import 'package:preparation/logic/cubits/course_cubit/course_state.dart';
 import 'package:preparation/presentation/auth_screen/sign_in_screen.dart';
 import 'package:preparation/presentation/course_screens/course_detail.dart';
 import 'package:preparation/presentation/student_screens/student_profile_screen.dart';
@@ -171,7 +171,7 @@ class HomePage extends StatelessWidget {
                                         .courses[index].description
                                         .toString()),
                                     title: Text(
-                                      state.courses[index].name.toString(),
+                                      state.courses[index].courseName.toString(),
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold),
                                     ),

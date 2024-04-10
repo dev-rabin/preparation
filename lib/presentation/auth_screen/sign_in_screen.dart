@@ -3,7 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:preparation/logic/blocs/course_cubit/course_cubit.dart';
+import 'package:preparation/logic/cubits/course_cubit/course_cubit.dart';
 import 'package:preparation/logic/blocs/sign_in_bloc/sign_in_bloc.dart';
 import 'package:preparation/logic/blocs/sign_in_bloc/sign_in_event.dart';
 import 'package:preparation/logic/blocs/sign_in_bloc/sign_in_state.dart';
