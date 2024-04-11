@@ -3,7 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:preparation/logic/cubits/lesson_cubit/lesson_cubit.dart';
+import 'package:preparation/logic/blocs/lesson_bloc/lesson_bloc.dart';
 import 'package:preparation/logic/cubits/module_cubit/module_cubit.dart';
 import 'package:preparation/logic/cubits/module_cubit/module_state.dart';
 import 'package:preparation/presentation/course_screens/lesson_screeen.dart';
@@ -65,7 +65,7 @@ class CourseDetail extends StatelessWidget {
                               context,
                               CupertinoPageRoute(
                                 builder: (context) => BlocProvider(
-                                  create: (context) => LessonCubit(moduleId),
+                                  create: (context) => LessonBloc(moduleId),
                                   child: LessonScreen(moduleId: moduleId),
                                 ),
                               ),

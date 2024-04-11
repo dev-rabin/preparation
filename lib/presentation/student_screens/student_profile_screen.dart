@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:preparation/logic/blocs/sign_out_bloc/sign_out_bloc.dart';
 import 'package:preparation/logic/blocs/sign_out_bloc/sign_out_event.dart';
-import 'package:preparation/logic/blocs/student_data_cubit/student_data_cubit.dart';
-import 'package:preparation/logic/blocs/student_data_cubit/student_data_state.dart';
+import 'package:preparation/logic/cubits/student_data_cubit/student_data_cubit.dart';
+import 'package:preparation/logic/cubits/student_data_cubit/student_data_state.dart';
 import 'package:preparation/presentation/auth_screen/sign_in_screen.dart';
 
 class StudentProfile extends StatelessWidget {

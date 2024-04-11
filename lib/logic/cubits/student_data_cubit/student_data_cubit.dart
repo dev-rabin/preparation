@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:preparation/data/models/student_model.dart';
 import 'package:preparation/data/repository/auth_repository.dart';
-import 'package:preparation/logic/blocs/student_data_cubit/student_data_state.dart';
+import 'package:preparation/logic/cubits/student_data_cubit/student_data_state.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class StudentDataCubit extends Cubit<StudentDataState> {

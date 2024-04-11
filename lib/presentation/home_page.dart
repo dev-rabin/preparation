@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:preparation/logic/cubits/module_cubit/module_cubit.dart';
 import 'package:preparation/logic/blocs/sign_out_bloc/sign_out_event.dart';
 import 'package:preparation/logic/blocs/sign_out_bloc/sign_out_bloc.dart';
-import 'package:preparation/logic/blocs/student_data_cubit/student_data_cubit.dart';
+import 'package:preparation/logic/cubits/student_data_cubit/student_data_cubit.dart';
 import 'package:preparation/logic/cubits/internet_cubit.dart';
 import 'package:preparation/logic/cubits/course_cubit/course_cubit.dart';
 import 'package:preparation/logic/cubits/course_cubit/course_state.dart';
