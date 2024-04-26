@@ -14,8 +14,8 @@ class CourseCubit extends Cubit<CourseState>{
     try {
      List<CourseModel> courses = await courseRepository.fetchCourses();
      emit(CourseDataSuccesState(courses));
-    } catch (e) {
-      emit(CourseDataErrorState(e.toString()));
+    } catch (ex) {
+      emit(CourseDataErrorState(ex.toString()));
     }
   }
 }

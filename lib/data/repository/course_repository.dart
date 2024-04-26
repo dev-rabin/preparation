@@ -1,4 +1,4 @@
-import 'dart:developer'; // Import the 'dart:developer' library
+import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:preparation/data/models/course_model.dart';
