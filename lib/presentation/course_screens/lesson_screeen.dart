@@ -6,7 +6,7 @@ import 'package:video_player/video_player.dart';
 class LessonScreen extends StatefulWidget {
   final int moduleId;
 
-  const LessonScreen({Key? key, required this.moduleId}) : super(key: key);
+  const LessonScreen({super.key, required this.moduleId});
 
   @override
   _LessonScreenState createState() => _LessonScreenState();

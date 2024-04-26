@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:preparation/logic/cubits/quiz_cubit.dart';
+import 'package:preparation/logic/cubits/course_cubit/quiz_cubit.dart';
+import 'package:preparation/logic/cubits/course_cubit/quiz_question_cubit.dart';
+import 'package:preparation/presentation/course_screens/quiz_detail_screen.dart';
 
 class QuizScreen extends StatelessWidget {
   const QuizScreen({super.key});
@@ -21,11 +24,29 @@ class QuizScreen extends StatelessWidget {
               return ListView.builder(
                 itemCount: state.quiz.length,
                 itemBuilder: (context, index) {
-                 return ListTile(
-                  leading: Text((index + 1).toString(),style:const TextStyle(fontSize: 16),),
+                  return ListTile(
+                    onTap: () {
+                      final quizId = state.quiz[index].quizId;
+                      if (quizId != null) {
+                        Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                            builder: (context) => BlocProvider(
+                              create: (context) => QuizQuestionCubit(quizId),
+                              child: QuizDetailScreen(quizId: quizId),
+                            ),
+                          ),
+                        );
+                      }
+                    },
+                    leading: Text(
+                      (index + 1).toString(),
+                      style: const TextStyle(fontSize: 16),
+                    ),
                     title: Text(state.quiz[index].quizName.toString()),
-                    subtitle: Text(state.quiz[index].quizDescription.toString()),
-                 );
+                    subtitle:
+                        Text(state.quiz[index].quizDescription.toString()),
+                  );
                 },
               );
             }
